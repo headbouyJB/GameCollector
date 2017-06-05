@@ -10,6 +10,9 @@ import UIKit
 
 class addGameViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    
     @IBAction func photosTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         
@@ -17,12 +20,15 @@ class addGameViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         gameImageView.image = image
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
+    
+    @IBOutlet weak var addupdateButton: UIButton!
     
     @IBAction func cameraTapped(_ sender: Any) {
     }
@@ -44,12 +50,24 @@ class addGameViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var imagePicker = UIImagePickerController()
     
+    var game : Game? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
         imagePicker.delegate = self
+        
+        if game != nil{
+            gameImageView.image = UIImage(data: game!.image! as Data)
+            titleText.text = game!.title
+            addupdateButton.setTitle("Update", for: .normal)
+        }else{
+            print("we have no game")
+            deleteButton.isHidden = true
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

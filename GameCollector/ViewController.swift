@@ -44,10 +44,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = UITableViewCell()
         let game = games[indexPath.row]
         cell.textLabel?.text = game.title
-        cell.imageView?.image = UIImage(data: game.image as! Data)
+        cell.imageView?.image = UIImage(data: game.image! as Data)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let game = games[indexPath.row]
+        performSegue(withIdentifier: "gameSegue", sender: game)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! addGameViewController
+        nextVC.game = sender as? Game
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

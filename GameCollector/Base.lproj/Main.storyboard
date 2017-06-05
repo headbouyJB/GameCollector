@@ -38,7 +38,7 @@
                     <navigationItem key="navigationItem" id="UWX-G1-XKU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Sa3-7o-t0D">
                             <connections>
-                                <segue destination="a0D-7T-wfO" kind="show" id="Ikd-c1-oZL"/>
+                                <segue destination="a0D-7T-wfO" kind="show" identifier="gameSegue" id="Ikd-c1-oZL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -63,10 +63,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vO5-7T-NOR">
-                                <rect key="frame" x="164" y="344" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="N8E-oT-YS4"/>
-                                </constraints>
+                                <rect key="frame" x="172" y="344" width="30" height="30"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="addTapped:" destination="a0D-7T-wfO" eventType="touchUpInside" id="Wkf-qV-px5"/>
@@ -85,6 +82,13 @@
                                     <constraint firstAttribute="height" constant="140" id="hpD-PG-XFI"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npw-zx-edQ">
+                                <rect key="frame" x="164.5" y="394" width="45" height="30"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="a0D-7T-wfO" eventType="touchUpInside" id="FFT-7e-FyM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -94,7 +98,9 @@
                             <constraint firstItem="Bsh-rz-Eqx" firstAttribute="width" secondItem="INz-6z-pyC" secondAttribute="width" id="OYc-Lc-12p"/>
                             <constraint firstItem="vO5-7T-NOR" firstAttribute="top" secondItem="Bsh-rz-Eqx" secondAttribute="bottom" constant="60" id="cgg-Nb-869"/>
                             <constraint firstItem="Bsh-rz-Eqx" firstAttribute="centerX" secondItem="INz-6z-pyC" secondAttribute="centerX" id="d0b-wz-jLO"/>
+                            <constraint firstItem="npw-zx-edQ" firstAttribute="centerX" secondItem="Z1o-cU-7Yy" secondAttribute="centerX" id="d8c-dx-u89"/>
                             <constraint firstItem="INz-6z-pyC" firstAttribute="top" secondItem="Awf-Qn-QLr" secondAttribute="bottom" constant="20" id="mzi-XF-o3u"/>
+                            <constraint firstItem="npw-zx-edQ" firstAttribute="top" secondItem="vO5-7T-NOR" secondAttribute="bottom" constant="20" id="nUQ-1P-T33"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ikj-At-5Ip">
@@ -112,6 +118,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addupdateButton" destination="vO5-7T-NOR" id="LW4-Qz-xcB"/>
+                        <outlet property="deleteButton" destination="npw-zx-edQ" id="zwH-MG-xV1"/>
                         <outlet property="gameImageView" destination="INz-6z-pyC" id="Fc7-io-2Kc"/>
                         <outlet property="titleText" destination="Bsh-rz-Eqx" id="4uT-gX-Yph"/>
                     </connections>
